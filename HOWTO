@@ -1,14 +1,21 @@
-Install meteor
+#Install meteor
 curl https://install.meteor.com/ | sh
 
-Create new meteor project
+#Create new meteor project
 meteor create t_t
 
-Launche app
+#Launche app
 cd t_t
 meteor
 
-Install a new package for meteor
+#Install a new package for meteor
 meteor add twbs:bootstrap
+meteor add iron:router
+
+#remove insecure package
+meteor remove autopublish
+meteor remove insecure
+
+
 
 
