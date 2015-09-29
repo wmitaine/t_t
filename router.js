@@ -1,8 +1,8 @@
-Router.route('/', function () {
+/*Router.route('/', function () {
   this.render('home');
 },{
 	name: 'home'
-});
+});*/
 
 /*Router.route('share/:_id', function(){
 	var params = this.params;

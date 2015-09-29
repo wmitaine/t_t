@@ -1,3 +1,16 @@
+/*Meteor.subscribe('playersAvailable');*/
+
+Template.playersAvailable.helpers({
+	/*var playersAvailable = Players.find({});
+	return playersAvailable;*/
+
+	playersAvailable: function(){
+		return Players.find({});
+	}
+});
+
+
+
 Template.form_addingPlayer.events({
 	'click .btn': function (event) {
 		event.preventDefault();
