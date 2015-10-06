@@ -9,8 +9,10 @@
 
 <template name="home">
 	{{> form_addingPlayer}}
-	<!--{{> form_addingTable}}-->
-	{{> playersAvailable}}
+	
+	{{> form_addingTable}}
+
+	{{> table}}
 </template>
 
 
@@ -37,10 +39,8 @@
 
 
 <template name="form_addingTable">
-	<div id="newTableDiv" style="border:1px black solid">
-		<select multiple name="playerSelect" id="playersSelectList"  >
-			<option value="-1">S&eacute;l&eacute;ctionnez les joueurs</option>
-		</select>
+	<div id="newTableDiv" class="row">
+		{{> playersAvailable}}
 		<input type="button" id="newTableButton" value="Nouvelle Table"/>
 		<input type="button" id="newTournamentButton" value="Nouveau Tournoi"/>
 	</div>
@@ -57,15 +57,21 @@
 			</tr>
 		</thead>
 		<tbody>
-		{{#each players}}
-			<div id="" class="player" playerid="{{ _id }}"> 
-				<span id="player1_name" class="playername">{{ name }}</span> : <span id="player1_score" class="playerscore">{{ score }}</span>
-			</div>
-		{{/each}}
+		{{> players}}
 		</tbody>
 	</table>
 		
 	</div>
+</template>
+
+<template name="players">
+	{{#each players}}
+		<tr>
+			<td></td>
+			<td>{{ name }}</td>
+			<td>{{ score }}</td>
+		</tr>
+	{{/each}}
 </template>
 
 <template name="announce">
