@@ -8,11 +8,11 @@
 
 
 <template name="home">
-	{{> form_addingPlayer}}
+	<!--{{> form_addingPlayer}}-->
 	
 	{{> form_addingTable}}
 
-	{{> table}}
+	<!--{{> table}}-->
 </template>
 
 
@@ -24,25 +24,41 @@
 			<input type="text" class="form-control" id="name" placeholder="Votre prénom">			
 			<button class="btn btn-default">Ajouter</button>
 		</form>
+		{{> playersAvailable}}
+
 	</div>
 </template>
 
 <template name="playersAvailable">
 	<div class="row">
-		<select size="10">
-			{{#each playersAvailable}}
-				<option value="{{ _id }}">{{ name }}</option>
-			{{/each}}
-		</select>
+		<span>Joueurs inscrit</span>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Nom</th>
+					<th>Score</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each playersAvailable}}
+					<tr>
+						<td></td>
+						<td>{{ name }}</td>
+						<td>{{ score }}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
 	</div>
 </template>
 
 
 <template name="form_addingTable">
 	<div id="newTableDiv" class="row">
-		{{> playersAvailable}}
-		<input type="button" id="newTableButton" value="Nouvelle Table"/>
-		<input type="button" id="newTournamentButton" value="Nouveau Tournoi"/>
+		
+		<input class="btn btn-default" type="button" id="newTableButton" value="Nouvelle Table"/>
+		<!--<input type="button" id="newTournamentButton" value="Nouveau Tournoi"/>-->
 	</div>
 </template>
 
@@ -57,15 +73,15 @@
 			</tr>
 		</thead>
 		<tbody>
-		{{> players}}
+		{{> tablePlayers}}
 		</tbody>
 	</table>
 		
 	</div>
 </template>
 
-<template name="players">
-	{{#each players}}
+<template name="tablePlayers">
+	{{#each tablePlayers}}
 		<tr>
 			<td></td>
 			<td>{{ name }}</td>
@@ -102,3 +118,12 @@
 	<input type="button" id="reset" value="reset"/>
 </template>
 
+<template name="playersSelectable">
+	<div class="row">
+		<select multiple size="10">
+			{{#each playersSelectable}}
+				<option value="{{ _id }}">{{ name }}</option>
+			{{/each}}
+		</select>
+	</div>
+</template>

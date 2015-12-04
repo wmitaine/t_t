@@ -6,6 +6,7 @@ Meteor.methods({
 
 		if(existedPlayer){
 			console.log(player.name + " existe déjà.");
+			alert(player.name + " existe déjà.");
 			return false;
 		}else{
 			newPlayer = Players.insert({"name": player.name, "createdAt" : Date.now()}, function(error, result){});
