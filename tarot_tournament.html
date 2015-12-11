@@ -12,6 +12,8 @@
 	
 	{{> form_addingTable}}
 
+	{{> playersSelectable}}
+
 	<!--{{> table}}-->
 </template>
 
@@ -120,10 +122,11 @@
 
 <template name="playersSelectable">
 	<div class="row">
-		<select multiple size="10">
+		<select multiple size="10" id="playersList">
 			{{#each playersSelectable}}
-				<option value="{{ _id }}">{{ name }}</option>
+				<option value="{{ _id }}" name="{{ name }}">{{ name }}</option>
 			{{/each}}
 		</select>
+		<input type="button" id="create" value="Créer" class="btn"/>
 	</div>
 </template>
