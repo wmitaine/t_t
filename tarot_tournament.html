@@ -7,14 +7,12 @@
 </body>
 
 
-<template name="home">
-	<!--{{> form_addingPlayer}}-->
-	
-	{{> form_addingTable}}
-
-	{{> playersSelectable}}
-
-	<!--{{> table}}-->
+<template name="home">	
+	<div id="home">
+		<input class="btn btn-default" type="button" id="newTableButton" value="Nouvelle Table"/>
+		<input class="btn btn-default" type="button" id="newTournamentButton" value="Nouveau Tournoi" disabled="disabled" />
+		<input type="button" id="open_params" value="Param&egrave;tres" class="btn"/>
+	</div>
 </template>
 
 
@@ -23,7 +21,7 @@
 	<div class="row">
 		<form class="form-inline">
 			<label for="name">Nom</label>
-			<input type="text" class="form-control" id="name" placeholder="Votre prénom">			
+			<input type="text" class="form-control" id="name" placeholder="prénom">			
 			<button class="btn btn-default">Ajouter</button>
 		</form>
 		{{> playersAvailable}}
@@ -56,11 +54,10 @@
 </template>
 
 
-<template name="form_addingTable">
+<template name="form_newTable">	
 	<div id="newTableDiv" class="row">
-		
-		<input class="btn btn-default" type="button" id="newTableButton" value="Nouvelle Table"/>
-		<!--<input type="button" id="newTournamentButton" value="Nouveau Tournoi"/>-->
+		{{> playersSelectable}}
+		<input type="button" id="startTable" value="Créer" class="btn"/>
 	</div>
 </template>
 
@@ -127,6 +124,14 @@
 				<option value="{{ _id }}" name="{{ name }}">{{ name }}</option>
 			{{/each}}
 		</select>
-		<input type="button" id="create" value="Créer" class="btn"/>
+	</div>
+</template>
+
+<template name="parameters">
+	<div class="row" id="parameters_div">
+		<input type="button" id="add_player_button" value="Ajouter un joueur" class="btn"/>
+		<input type="button" id="see_selectable_player_button" value="Voir les joueurs inscrits" class="btn"/>
+		<input type="button" id="game_config" value="R&egrave;gles" class="btn"/>
+		<input type="button" id="close_params" value="Fermer" class="btn"/>
 	</div>
 </template>

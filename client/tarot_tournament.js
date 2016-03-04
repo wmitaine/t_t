@@ -35,16 +35,22 @@ Template.form_addingPlayer.events({
 	}
 });
 
-Template.form_addingTable.events({
+/*Template.form_newTable.events({
 	'click .btn': function (event) {
 		event.preventDefault();
 		UI.insert(UI.render(Template.playersSelectable), document.body)
 		
 	}
-});
+});*/
 
 Template.playersSelectable.events({
-	'click .btn': function (event) {
+	'click .btn' : function (event){
+		
+	}
+});
+
+Template.form_newTable.events({
+	'click .btn#startTable': function (event) {
 		event.preventDefault();
 		var nbPlayer = $('#playersList option:selected').length;
 
@@ -55,5 +61,28 @@ Template.playersSelectable.events({
 				console.log($(this).val());
 			});
 		}
+	}
+});
+
+
+Template.home.events({
+	'click .btn#open_params' : function (event){
+		event.preventDefault();
+		UI.insert(UI.render(Template.parameters), document.body);
+
+		//tentative de cacher un template
+		var instance = UI.renderWithData(Template.home, {});
+		instance.dom.remove();
+	},
+	'click .btn#newTableButton' : function (event){
+		event.preventDefault();
+		UI.insert(UI.render(Template.form_newTable), document.body);
+	}
+});
+
+
+Template.home.helpers({
+	destroy: function() {
+		this.dom.remove();
 	}
 });

@@ -1,4 +1,4 @@
-Tasks = new Mongo.Collection("tasks");
+/*Tasks = new Mongo.Collection("tasks");
  
 if (Meteor.isClient) {
   // This code only runs on the client
@@ -47,3 +47,4 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+*/
