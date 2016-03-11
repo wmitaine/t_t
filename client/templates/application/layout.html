@@ -1,0 +1,131 @@
+<template name="home">	
+	<div id="home">
+		{{> nav}}
+	</div>
+</template>
+
+<template name="nav">
+	<input class="btn btn-default" type="button" id="newTableButton" value="Nouvelle Table"/>
+	<input class="btn btn-default" type="button" id="newTournamentButton" value="Nouveau Tournoi" disabled="disabled" />
+	<input class="btn btn-default" type="button" id="open_params" value="Param&egrave;tres" />
+</template>
+
+<template name="form_addingPlayer">
+	<h3>Ajouter un joueur</h3>
+	<div class="row">
+		<form class="form-inline">
+			<label for="name">Nom</label>
+			<input type="text" class="form-control" id="name" placeholder="prénom">			
+			<button class="btn btn-default">Ajouter</button>
+		</form>
+		{{> playersAvailable}}
+
+	</div>
+</template>
+
+<template name="playersAvailable">
+	<div class="row">
+		<span>Joueurs inscrit</span>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Nom</th>
+					<th>Score</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each playersAvailable}}
+					<tr>
+						<td></td>
+						<td>{{ name }}</td>
+						<td>{{ score }}</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</template>
+
+
+<template name="form_newTable">	
+	<div id="newTableDiv" class="row">
+		{{> playersSelectable}}
+		<input type="button" id="startTable" value="Créer" class="btn"/>
+	</div>
+</template>
+
+<template name="table">
+	<div id="table" tableid="">
+		<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Nom</th>
+				<th>Score</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{> tablePlayers}}
+		</tbody>
+	</table>
+		
+	</div>
+</template>
+
+<template name="tablePlayers">
+	{{#each tablePlayers}}
+		<tr>
+			<td></td>
+			<td>{{ name }}</td>
+			<td>{{ score }}</td>
+		</tr>
+	{{/each}}
+</template>
+
+<template name="announce">
+	<div id="announcment">
+		<select id="taker" name="taker">
+			<option value="-1">Preneur</option>
+		</select>
+		prends une 
+		<select id="contractList" name="contract">
+			<option value="-1">Contrat</option>				
+		</select>
+		avec 
+		<select id="called" name="called">
+			<option value="-1">Appel&eacute;</option>
+		</select>
+		<span>Point Preneur : </span><input type="text" id="takerPoints"/>
+		<span>Point Défense :</span><input type="text" id="defensePoints"/>
+		<span>Nombre de bouts</span>
+		<select name="takerAssets" id="takerAssets">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<input type="button" id="validate" value="Valider"/>
+	</div>
+
+	<input type="button" id="reset" value="reset"/>
+</template>
+
+<template name="playersSelectable">
+	<div class="row">
+		<select multiple size="10" id="playersList">
+			{{#each playersSelectable}}
+				<option value="{{ _id }}" name="{{ name }}">{{ name }}</option>
+			{{/each}}
+		</select>
+	</div>
+</template>
+
+<template name="config">
+	<div class="row" id="config_div">
+		<input type="button" id="add_player_button" value="Ajouter un joueur" class="btn"/>
+		<input type="button" id="see_selectable_player_button" value="Voir les joueurs inscrits" class="btn"/>
+		<input type="button" id="game_config" value="R&egrave;gles" class="btn"/>
+		<input type="button" id="close_config" value="Retour" class="btn"/>
+	</div>
+</template>

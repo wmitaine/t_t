@@ -65,24 +65,21 @@ Template.form_newTable.events({
 });
 
 
-Template.home.events({
+Template.nav.events({
 	'click .btn#open_params' : function (event){
-		event.preventDefault();
-		UI.insert(UI.render(Template.parameters), document.body);
-
-		//tentative de cacher un template
-		var instance = UI.renderWithData(Template.home, {});
-		instance.dom.remove();
+		//redirection vers /config/
+		Router.go('config');
 	},
 	'click .btn#newTableButton' : function (event){
-		event.preventDefault();
-		UI.insert(UI.render(Template.form_newTable), document.body);
+		//redirection vers /table/
+		//Router.go('table');
 	}
 });
 
-
-Template.home.helpers({
-	destroy: function() {
-		this.dom.remove();
+Template.config.events({
+	'click .btn#close_config' : function (event){
+		//redirection vers /config/
+		Router.go('home');
 	}
 });
+
